@@ -2,7 +2,7 @@ from skimage.io import imread
 import numpy as np
 from deepcell.applications import NuclearSegmentation
 import matplotlib.pyplot as plt
-
+from image_cropper import single_nuc_crop
 
 # Load the image
 image = imread('resources/Screenshot 2022-05-12 115423.png', as_gray=True)
@@ -22,3 +22,5 @@ fig, axs = plt.subplots(2)
 axs[0].imshow(image.reshape(72, 102, 1))
 axs[1].imshow(labeled_image.reshape(72, 102, 1))
 plt.show()
+
+

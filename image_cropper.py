@@ -14,3 +14,6 @@ def single_nuc_crop(x, y, win_size, spot_frame, video):
     return single_nuc_crop
 
 
+if __name__ == '__main__':
+    print()
+#dlfghkfdklghlfdhgldlglfdhl

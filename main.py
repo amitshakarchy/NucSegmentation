@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from skimage.io import imread
+import numpy as np
+from deepcell.applications import NuclearSegmentation
+import matplotlib.pyplot as plt
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Load the image
+image = imread('resources/Screenshot 2022-05-12 115423.png', as_gray=True)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Expand image dimensions to rank 4
+im = np.expand_dims(image, axis=-1)
+im = np.expand_dims(im, axis=0)
+
+# Create the application
+app = NuclearSegmentation()
+
+# create the lab
+labeled_image = app.predict(im)
+
+# plot the original image and the predicted segmentation
+fig, axs = plt.subplots(2)
+axs[0].imshow(image.reshape(72, 102, 1))
+axs[1].imshow(labeled_image.reshape(72, 102, 1))
+plt.show()

@@ -33,16 +33,4 @@ def segment_image(img):
 
     return seg_image
 
-if __name__ == '__main__':
 
-    #read image from resources and do segmentation on the image
-    #the min window size that the segmentation word is 40
-
-    img = imread('resources/crop_2.png', as_gray=True)
-    crop_size_0, crop_size_1 = img.shape[0], img.shape[1]
-
-    preProcess = preprocess_image(img)
-    seg = segment_image(preProcess)
-
-    plt.imshow(seg.reshape(crop_size_0, crop_size_1, 1))
-    plt.show()
